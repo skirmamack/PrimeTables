@@ -40,5 +40,21 @@ namespace PrimeTables.Tests
 
             Assert.That(firstRowColumnValuesList.ToArray(), Is.EqualTo(primeNumbers));
         }
+
+        [Test]
+        public void first_column_values_except_of_top_left_corner_should_be_prime_numbers()
+        {
+            var primeTable = _primeTableGenerator.Generate(_testPrimesCount);
+
+            var primeNumbers = new PrimeNumbersGenerator().Generate(_testPrimesCount);
+            var firstRowColumnValuesList = new List<long>();
+
+            for (int rowIndex = 1; rowIndex <= _testPrimesCount; rowIndex++)
+            {
+                firstRowColumnValuesList.Add(primeTable[rowIndex, 0]);
+            }
+
+            Assert.That(firstRowColumnValuesList.ToArray(), Is.EqualTo(primeNumbers));
+        }
     }
 }
