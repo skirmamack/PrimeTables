@@ -6,21 +6,15 @@ namespace PrimeTables.Math
     {
         public int[] Generate(int primeNumbersCount)
         {
-            if (primeNumbersCount <= 0)
-            {
-                return new int[0];
-            }
-
             var result = new List<int>();
             var numberToCheck = 1;
             while (primeNumbersCount > 0)
             {
                 numberToCheck++;
-                if (IsPrimeNumber(numberToCheck))
-                {
-                    result.Add(numberToCheck);
-                    primeNumbersCount--;
-                }
+                if (!IsPrimeNumber(numberToCheck)) continue;
+
+                result.Add(numberToCheck);
+                primeNumbersCount--;
             }
 
             return result.ToArray();
