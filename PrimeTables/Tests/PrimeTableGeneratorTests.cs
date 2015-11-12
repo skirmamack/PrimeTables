@@ -56,5 +56,21 @@ namespace PrimeTables.Tests
 
             Assert.That(firstRowColumnValuesList.ToArray(), Is.EqualTo(primeNumbers));
         }
+
+        [Test]
+        public void inner_cell_values_should_be_products_of_their_first_columns_and_first_rows()
+        {
+            var primeTable = _primeTableGenerator.Generate(_testPrimesCount);
+            var primeNumbers = new PrimeNumbersGenerator().Generate(_testPrimesCount);
+
+            for (var rowIndex = 1; rowIndex <= _testPrimesCount; rowIndex++)
+            {
+                for (var columnIndex = 1; columnIndex <= _testPrimesCount; columnIndex++)
+                {
+                    var valueToCheck = primeNumbers[rowIndex - 1] * primeNumbers[columnIndex - 1];
+                    Assert.That(primeTable[rowIndex, columnIndex], Is.EqualTo(valueToCheck));
+                }
+            }
+        }
     }
 }
