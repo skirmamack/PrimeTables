@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using PrimeTables.Math;
 using System.Collections.Generic;
 
@@ -28,33 +29,23 @@ namespace PrimeTables.Tests
         [Test]
         public void first_row_columns_values_except_of_top_left_corner_should_be_prime_numbers()
         {
-            var primeTable = _primeTableGenerator.Generate(_testPrimesCount);
-
             var primeNumbers = new PrimeNumbersGenerator().Generate(_testPrimesCount);
-            var firstRowColumnValuesList = new List<int>();
 
-            for (var columnIndex = 1; columnIndex <= _testPrimesCount; columnIndex++)
-            {
-                firstRowColumnValuesList.Add(primeTable[0, columnIndex]);
-            }
+            var primeTable = _primeTableGenerator.Generate(_testPrimesCount);
+            var firstRowColumnValuesList = GetFirstRowColumnValues(primeTable);
 
-            Assert.That(firstRowColumnValuesList.ToArray(), Is.EqualTo(primeNumbers));
+            Assert.That(firstRowColumnValuesList, Is.EqualTo(primeNumbers));
         }
 
         [Test]
         public void first_column_values_except_of_top_left_corner_should_be_prime_numbers()
         {
-            var primeTable = _primeTableGenerator.Generate(_testPrimesCount);
-
             var primeNumbers = new PrimeNumbersGenerator().Generate(_testPrimesCount);
-            var firstRowColumnValuesList = new List<long>();
 
-            for (var rowIndex = 1; rowIndex <= _testPrimesCount; rowIndex++)
-            {
-                firstRowColumnValuesList.Add(primeTable[rowIndex, 0]);
-            }
+            var primeTable = _primeTableGenerator.Generate(_testPrimesCount);
+            var firstColumnValuesList = GetFirstColumnValues(primeTable);
 
-            Assert.That(firstRowColumnValuesList.ToArray(), Is.EqualTo(primeNumbers));
+            Assert.That(firstColumnValuesList, Is.EqualTo(primeNumbers));
         }
 
         [Test]
@@ -71,6 +62,28 @@ namespace PrimeTables.Tests
                     Assert.That(primeTable[rowIndex, columnIndex], Is.EqualTo(valueToCheck));
                 }
             }
+        }
+
+        private int[] GetFirstRowColumnValues(int[,] primeTable)
+        {
+            var firstRowColumnValuesList = new List<int>();
+
+            for (var columnIndex = 1; columnIndex <= _testPrimesCount; columnIndex++)
+            {
+                firstRowColumnValuesList.Add(primeTable[0, columnIndex]);
+            }
+            return firstRowColumnValuesList.ToArray();
+        }
+
+        private int[] GetFirstColumnValues(int[,] primeTable)
+        {
+            var firstColumnValuesList = new List<int>();
+
+            for (var rowIndex = 1; rowIndex <= _testPrimesCount; rowIndex++)
+            {
+                firstColumnValuesList.Add(primeTable[rowIndex, 0]);
+            }
+            return firstColumnValuesList.ToArray();
         }
     }
 }

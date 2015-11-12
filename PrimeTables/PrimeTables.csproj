@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\General.cs" />
     <Compile Include="Math\IPrimeNumbersGenerator.cs" />
     <Compile Include="Math\IPrimeTableGenerator.cs" />
     <Compile Include="Math\PrimeNumbersGenerator.cs" />
@@ -68,15 +69,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\PrimeNumbersGeneratorTests.cs" />
     <Compile Include="Tests\PrimeTableGeneratorTests.cs" />
+    <Compile Include="UI\ConsolePrimeTableDisplayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Constants\" />
-    <Folder Include="UI\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
