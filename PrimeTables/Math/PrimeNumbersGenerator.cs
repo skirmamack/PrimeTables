@@ -4,7 +4,7 @@
     {
         public int[] Generate(int primeNumbersCount)
         {
-            return new int[0];
+            return new[] {1, 1};
         }
     }
 }
