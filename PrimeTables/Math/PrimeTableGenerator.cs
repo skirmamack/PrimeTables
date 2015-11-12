@@ -4,7 +4,8 @@
     {
         public int[,] Generate(int primeNumbersCount)
         {
-            return new int[0,0];
+            var result = new int[primeNumbersCount + 1, primeNumbersCount + 1];
+            return result;
         }
     }
 }
