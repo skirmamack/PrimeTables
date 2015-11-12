@@ -49,7 +49,7 @@ namespace PrimeTables.Tests
             var primeNumbers = new PrimeNumbersGenerator().Generate(_testPrimesCount);
             var firstRowColumnValuesList = new List<long>();
 
-            for (int rowIndex = 1; rowIndex <= _testPrimesCount; rowIndex++)
+            for (var rowIndex = 1; rowIndex <= _testPrimesCount; rowIndex++)
             {
                 firstRowColumnValuesList.Add(primeTable[rowIndex, 0]);
             }

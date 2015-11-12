@@ -22,6 +22,7 @@
             for(var primeIndex = 0; primeIndex < primeNumbers.Length; primeIndex++)
             {
                 result[0, primeIndex + 1] = primeNumbers[primeIndex];
+                result[primeIndex + 1, 0] = primeNumbers[primeIndex];
             }
 
             return result;
